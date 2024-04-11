@@ -13,7 +13,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<revision>0.5</revision>
+		<revision>0.9.0</revision>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -91,7 +91,7 @@
 					<target>${java.version}</target>
 					<compilerArgs>
 						<verbose />
-						<bootclasspath>${jre.home}/lib/rt.jar</bootclasspath>
+						<bootclasspath>${oldjre.home}/lib/rt.jar</bootclasspath>
 					</compilerArgs>
 				</configuration>
 			</plugin>
