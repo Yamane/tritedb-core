@@ -1,0 +1,1 @@
+update tritedb set name1=?,name2=? where id=?

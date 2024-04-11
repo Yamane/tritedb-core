@@ -1,0 +1,1 @@
+insert into tritedb(name1,name2) values(?,?)

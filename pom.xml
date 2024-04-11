@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>yamane</groupId>
+	<artifactId>tritedb-core</artifactId>
+	<version>${revision}</version>
+	<packaging>jar</packaging>
+
+	<name>TriteDb</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<revision>0.5</revision>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven-compoler.sorce>${java.version}</maven-compoler.sorce>
+		<maven-compoler.target>${java.version}</maven-compoler.target>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub OWNER Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/Yamane/tritedb-core</url>
+		</repository>
+	</distributionManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.224</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.13.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<compilerArgs>
+						<verbose />
+						<bootclasspath>${jre.home}/lib/rt.jar</bootclasspath>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.6.3</version>
+				<configuration>
+					<doctitle>TriteDb APIドキュメント</doctitle>
+					<author>true</author>
+					<source>${java.version}</source>
+					<show>protected</show>
+					<encoding>UTF-8</encoding>
+					<docencoding>UTF-8</docencoding>
+					<bottom><![CDATA[Copyright &copy; Yamamoto Yamane. All rights reserved.]]></bottom>
+					<overview>${basedir}/src/main/resources/overview.html</overview>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.11</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<description>JDBCによるデータベースアクセス処理を簡略化するための、小規模なライブラリです。
+		なんとなくDBアクセス処理書かなきゃならないときとかに少し便利です。コード量すくないのでJDBCの勉強にもいいかも。そうでもないかも。
+		もとは Jakarta Commons
+		DbUtilsが当時ジェネリクスとか可変長引数とか対応していなかったので、それが使いたいがために自前で改造したものだったのですが、原型とは結構豹変しました。
+		本家が対応してしまったので存在意義はほとんどないような。
+		とはいえ個人的には結構長く使っているものなので、供養もこめてJSE8までの仕様でリファクタリングとかして晒してみたりしたナニカです。</description>
+</project>

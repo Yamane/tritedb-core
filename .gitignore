@@ -1,0 +1,13 @@
+.vscode
+*.jar
+target/classes
+target/test-classes
+target/generated-sources
+target/generated-test-sources
+target/javadoc-bundle-options
+target/maven-archiver
+target/maven-status
+target/surefire-reports
+target/site
+target/maven-javadoc-plugin-stale-data.txt
+
